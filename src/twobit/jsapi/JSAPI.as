@@ -17,6 +17,7 @@ package twobit.jsapi {
 	import adobe.utils.MMExecute;
 	import flash.external.ExternalInterface;
 	import flash.events.EventDispatcher;
+	import twobit.jsapi.events.JSFLEvent;
 	
 	public class JSAPI {
 
@@ -44,7 +45,7 @@ package twobit.jsapi {
 			var evtID:int = int(MMExecute(jsfl));
 		}
 		
-        public static function dispatchEvent(event:Event):Boolean {
+        public static function dispatchEvent(event:JSFLEvent):Boolean {
             return _dispatcher.dispatchEvent(event);
         }
         public static function hasEventListener(type:String):Boolean {
@@ -59,7 +60,8 @@ package twobit.jsapi {
 		
 		private static function eventTriggered(type):void{
 			try{
-				dispatchEvent(new Event(type));
+				// right now JSFLEvent constructor expects 2nd param to be success. will possiblly pass custom data in it later.
+				dispatchEvent(new JSFLEvent(type, true));
 			} catch(e:Error){
 				tr(e);
 			}

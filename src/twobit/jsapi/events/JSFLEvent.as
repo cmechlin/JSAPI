@@ -1,4 +1,4 @@
-/*
+﻿/*
 * File: JSFLEvent.as 
 * Description:
 *   Library: Flash Actionscript 3.0 class written to assist in interfacing the JSFL (JSAPI) within flash used when creating swf panels for extending Flash
@@ -44,7 +44,7 @@ package twobit.jsapi.events {
 		
 		override public function clone():Event
 		{
-			return new ElementEvent( type, success );
+			return new JSFLEvent( type, success );
 		}
 	}
 }
